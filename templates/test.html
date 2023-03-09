@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+	<title>筛选列表</title>
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			background-color: #f2f2f2;
+		}
+
+		.container {
+			max-width: 600px;
+			margin: 0 auto;
+			padding: 20px;
+			background-color: #fff;
+			box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+		}
+
+		form {
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: space-between;
+			align-items: center;
+		}
+
+		label {
+			flex-basis: 30%;
+			margin-bottom: 10px;
+		}
+
+		select {
+			flex-basis: 65%;
+			padding: 5px;
+			border-radius: 3px;
+			border: 1px solid #ccc;
+		}
+
+		input[type="submit"] {
+			display: block;
+			margin: 20px auto;
+			padding: 10px 20px;
+			border-radius: 5px;
+			background-color: #4CAF50;
+			color: #fff;
+			font-size: 16px;
+			border: none;
+			cursor: pointer;
+			box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+		}
+
+		input[type="submit"]:hover {
+			background-color: #3e8e41;
+		}
+
+		h1 {
+			text-align: center;
+			margin-top: 50px;
+		}
+	</style>
+</head>
+<body>
+	<h1>筛选列表</h1>
+	<div class="container">
+		<form>
+			<label for="producer">producer数量:</label>
+			<select id="producer">
+				<option value="">不限</option>
+                {% for option in producers %}
+				<option value="{{option}}">{{option}}</option>
+                {% endfor %}
+			</select>
+
+			<label for="consumer">consumer数量:</label>
+			<select id="consumer">
+				<option value="">不限</option>
+                {% for option in consumers %}
+				<option value="{{option}}">{{option}}</option>
+                {% endfor %}
+			</select>
+
+			<label for="topic">producer写入的topic数量:</label>
+			<select id="topic">
+				<option value="">不限</option>
+                {% for option in topics %}
+				<option value="{{option}}">{{option}}</option>
+                {% endfor %}
+			</select>
+
+			<label for="disk">磁盘类型:</label>
+			<select id="disk">
+				<option value="">不限</option>
+                {% for option in disks %}
+				<option value="{{option}}">{{option}}</option>
+                {% endfor %}
+			</select>
+
+			<label for="buffer">发送缓冲区大小:</label>
+			<select id="buffer">
+				<option value="">不限</option>
+                {% for option in buffers %}
+				<option value="{{option}}">{{option}}MB</option>
+                {% endfor %}
+			</select>
+
+			<input type="submit" value="提交">
+		</form>
+	</div>
